@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     books_path
   end
-
+  def afte_sign_up_path_for(resouce)
+    books_path
+  end
+  
   protected
 
   def configure_permitted_parameters
