@@ -20,9 +20,9 @@ en:
   New_Book: 'New Book'
 
   notice:
-    create: 'Book was successfully created.'
-    update: 'Book was successfully updated.'
-    destroy: 'Book was successfully destroyed.'
+    create: "%{model_name} was successfully created."
+    update: "%{model_name} was successfully updated."
+    destroy: "%{model_name} was successfully destroyed."
     sure: 'Are you sure?'
 
 

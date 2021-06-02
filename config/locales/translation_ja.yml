@@ -24,7 +24,7 @@ ja:
   New_Book: 新しい本
 
   notice:
-    create: 本が作成できた！
-    update: 本が更新された！
-    destroy: 本が削除された！
+    create: "%{model_name}が作成できた！"
+    update: "%{model_name}が更新された！"
+    destroy: "%{model_name}が削除された！"
     sure: 大丈夫？
