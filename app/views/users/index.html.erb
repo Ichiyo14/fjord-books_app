@@ -16,7 +16,7 @@
     <% @users.each do|user| %>
     <tr>
       <td><%= user.name %></td>
-      <td><%=user.id %></td>
+      <td><%= user.id %></td>
       <td><%= user.email%></td>
       <td><%= user.postal_code %></td>
       <td><%= user.address %></td>
@@ -28,6 +28,7 @@
 </table>
 
 <%= paginate @users %>
+
 <br>
 
-<%= link_to t('views.common.back'), books_path %>
+<%= link_to t('devise.shared.links.back'), books_path %>

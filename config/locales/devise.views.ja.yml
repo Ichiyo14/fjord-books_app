@@ -25,10 +25,10 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-        postal_code: 郵便番号
-        address: 住所
-        self_introduction: 自己紹介
-        name: 名前
+        postal_code: 郵便番号 #
+        address: 住所 #
+        self_introduction: 自己紹介 #
+        name: 名前 #
     models:
       user: ユーザー
   devise:
@@ -128,6 +128,7 @@ ja:
         sign_in: ログイン
         sign_in_with_provider: "%{provider}でログイン"
         sign_up: アカウント登録
+        sign_out: ログアウト #
       minimum_password_length: "（%{count}字以上）"
     unlocks:
       new:
@@ -145,12 +146,3 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
-  
-  order_characters: 文字
-  half_width_alphanumeric: 半角英数
-  characters_minimum: 文字以上
-  logged_in_as: ログイン中：
-  logout: ログアウト
-  user_list: ユーザーリスト
-  profile_edit: プロフィールの編集
-  infomation: 情報

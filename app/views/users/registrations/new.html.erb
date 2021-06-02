@@ -1,7 +1,7 @@
 <h2><%=t('devise.registrations.new.sign_up') %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -21,7 +21,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   <div class="field">
-    <%= f.label :postal_code %><i>(7<%=t('order_characters')%><%=t('half_width_alphanumeric') %>)</i><br />
+    <%= f.label :postal_code %><i>(<%=t(:format , scope: 'errors' ,attribute: t('activerecord.attributes.user.postal_code'), message: t(:wrong_length, scope:('errors.messages') ,count: 7))%>)</i><br />
     <%= f.text_field :postal_code %>
   </div>
 
@@ -45,4 +45,4 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render "devise/shared/links" %>
