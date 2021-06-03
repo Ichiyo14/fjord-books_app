@@ -1,4 +1,4 @@
-<h1><%= @user.email %><%= t('infomation')%></h1>
+<h1><%= t(:title , scope: 'user.show', resource: @user.email)%></h1>
 
 <p><%= @user.name %></p>
 <p><%= @user.email %></p>
@@ -6,4 +6,4 @@
 <p><%= @user.address %></p>
 <p><%= @user.self_introduction %></p>
 
-<p><%= link_to t('user_list'),users_path %></p>
+<p><%= link_to t('user.list'),users_path %></p>

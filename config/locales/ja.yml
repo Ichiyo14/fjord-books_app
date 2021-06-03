@@ -209,6 +209,9 @@ ja:
   
   user:
     list: ユーザーリスト
+    show:
+      title: "%{resource}の表示"
   views:
     common:
       show: 表示
+      
