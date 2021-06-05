@@ -5,6 +5,13 @@
   <%= @user.email %>
 </p>
 
+<%if @user.user_icon.attached? %>
+  <p>
+    <strong><%= User.human_attribute_name(:self_introduction) %>:</strong>
+    <%= image_tag @user.user_icon %>
+  </p>
+<%end%>
+
 <p>
   <strong><%= User.human_attribute_name(:name) %>:</strong>
   <%= @user.name %>
