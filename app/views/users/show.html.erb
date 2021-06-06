@@ -32,22 +32,8 @@
     <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150])%>
   <% end %>
 </p>
-
-<div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
-    following
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    followers
-  </a>
-</div>
- <%= render 'follow_form' %>
+<%= render 'shared/stats' %>
+<%= render 'follow_form' %>
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
