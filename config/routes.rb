@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     scope module: :users do
       resources :followings, only: [:index]
       resources :followers, only: [:index]
+      resources :reports, only: [:index]
     end
   end
 end
