@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[ show edit update destroy ]
   before_action :correct_user, only: %i[edit update destroy]
+  before_action :unique_report_at_date_for_each_user, only: %i[create]
   # GET /reports or /reports.json
   def index
     @reports = Report.all.includes(:user).order(id: "DESC").page(params[:page])
@@ -22,10 +23,9 @@ class ReportsController < ApplicationController
   # POST /reports
   def create
     @report = current_user.reports.new(report_params)
-
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: "Report was successfully created." }
+        format.html { redirect_to @report, notice: t(:notice_create,scope:'controllers.common' ,name: Report.model_name.human) }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,7 +36,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: "Report was successfully updated." }
+        format.html { redirect_to @report, notice:  t(:notice_update,scope:'controllers.common' ,name: Report.model_name.human) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -47,7 +47,7 @@ class ReportsController < ApplicationController
   def destroy
     @report.destroy
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: "Report was successfully destroyed." }
+      format.html { redirect_to reports_url, notice:  t(:notice_destroy,scope:'controllers.common' ,name: Report.model_name.human) }
     end
   end
 
@@ -65,5 +65,13 @@ class ReportsController < ApplicationController
     def correct_user
       report = Report.find(params[:id])
       redirect_to(reports_path) unless report.user == current_user
+    end
+
+    def unique_report_at_date_for_each_user
+      user = User.find(current_user.id)
+      reports = user.reports.all.order(id: :ASC)
+      if reports.map{|report| report.created_at.to_date}.include?(DateTime.now.to_date)
+        redirect_to(edit_report_path(reports.last.id) , notice: t(:notice_created_today, scope:'controllers.common' , name: Report.model_name.human))
+      end
     end
 end

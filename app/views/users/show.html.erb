@@ -38,7 +38,7 @@
   <li><%= link_to t('.followers', count: @user.followers.count), user_followers_path(@user) %></li>
 </ul>
 
-<%= link_to "Some Page", user_reports_path(@user) %>
+
 
 
 <% if current_user.following?(@user) %>
@@ -54,4 +54,5 @@
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
+<%= link_to User.human_attribute_name('reports', user:@user.name), user_reports_path(@user) %> |
 <%= link_to t('views.common.back'), users_path %>
