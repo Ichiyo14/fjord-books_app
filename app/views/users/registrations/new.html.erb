@@ -1,0 +1,48 @@
+<h2><%=t('devise.registrations.new.sign_up') %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em><%=t(:minimum_password_length ,scope: 'devise.shared' ,count: @minimum_password_length )%></em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <div class="field">
+    <%= f.label :postal_code %><i>(<%=t(:format , scope: 'errors' ,attribute: t('activerecord.attributes.user.postal_code'), message: t(:wrong_length, scope:('errors.messages') ,count: 7))%>)</i><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+    <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+    <div class="field">
+    <%= f.label :self_introduction %><br />
+    <%= f.text_field :self_introduction %>
+  </div>
+
+    <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('devise.registrations.new.sign_up') %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

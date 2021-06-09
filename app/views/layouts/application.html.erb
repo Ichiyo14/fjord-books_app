@@ -10,6 +10,20 @@
   </head>
 
   <body>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+  <p class="navbar-text pull-right">
+  <% if user_signed_in? %>
+    <%=t(:sign_in_with_provider, scope:'devise.shared.links', provider: current_user.email )%> |
+    <%= link_to t(:title, scope:'devise.registrations.edit', resource: User.model_name.human), edit_user_registration_path, class: 'navbar-link' %> |
+    <%= link_to t('views.common.sign_out'), destroy_user_session_path, method: :delete, class: 'navbar-link'  %> |
+    <%= link_to t('user.list'), users_path, class: 'navbar-link'  %>
+  <% else %>
+    <%= link_to t('devise.registrations.new.sign_up'), new_user_registration_path, class: 'navbar-link'  %> |
+    <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path, class: 'navbar-link'  %>
+  <% end %>
+</p>
     <%= yield %>
   </body>
 </html>
