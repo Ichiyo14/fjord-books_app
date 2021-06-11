@@ -4,7 +4,7 @@
 </p>
 <p>
   <strong><%= Report.human_attribute_name(:created_date) %></strong>
-  <%= @report.created_at.to_date %>
+  <%=l(@report.created_at.to_date, format: :long) %>
 </p>
 
 <p>
