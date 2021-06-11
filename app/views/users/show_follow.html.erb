@@ -6,7 +6,7 @@
   <span><%= link_to t('views.common.my_profile'), @user %></span>
 </section>
 <section class="stats">
-  <%= render 'shared/stats' %>
+  <%= render 'shared/stats', user: @user %>
 </section>
 <section>
 <% if @users.any? %>

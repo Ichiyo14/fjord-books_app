@@ -1,8 +1,4 @@
 <div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <%= t(:following, scope:'user_follow',count: @user.following.count) %>
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-<%= t(:follower, scope:'user_follow',count: @user.followers.count) %>
-  </a>
+  <%=link_to t(:following, scope:'user_follow',count: user.following.count), following_user_path(user) %>
+  <%=link_to t(:follower, scope:'user_follow',count: user.followers.count) , followers_user_path(user) %>
 </div>
