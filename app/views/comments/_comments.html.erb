@@ -1,0 +1,12 @@
+<% commentable.comments.order(created_at: :desc).each do |comment| %>
+<%if comment.user.name.present?%>
+   <p><%= comment.user.name %></p>
+<%else%>
+   <p><%= comment.user.email %></p>
+<%end%>
+<p><%= comment.body %></p>
+<p><%= comment.created_at%></p>
+<%end%>
+<% unless commentable.comments.present? %>
+ないよ
+<%end%>
