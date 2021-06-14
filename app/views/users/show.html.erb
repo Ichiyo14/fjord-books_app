@@ -39,8 +39,6 @@
 </ul>
 
 
-
-
 <% if current_user.following?(@user) %>
   <%= form_with(url: user_relationships_path(@user), method: :delete, local: true) do |f| %>
     <%= f.submit t('.destroy') %>
@@ -54,5 +52,10 @@
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
-<%= link_to User.human_attribute_name('reports', user:@user.name), user_reports_path(@user) %> |
+
+<%if @user.name.present? %>
+  <%= link_to User.human_attribute_name('reports', user: @user.name), user_reports_path(@user) %> |
+<%else%>
+  <%= link_to User.human_attribute_name('reports', user: @user.email), user_reports_path(@user) %> |
+<%end%>
 <%= link_to t('views.common.back'), users_path %>

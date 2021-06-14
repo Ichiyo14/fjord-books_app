@@ -18,11 +18,11 @@
 </p>
 
 <p>
-  <%= render 'comments/comments', commentable: @report%>
+  <%= render 'comments/comments', commentable: @report %>
 </p>
 
 <p>
-  <%= render 'comments/form', commentable: @report%>
+  <%= render 'comments/form', commentable: @report %>
 </p>
 
 <%if @report.user == current_user %>
@@ -30,4 +30,8 @@
   <%= link_to t('views.common.destroy'), @report, method: :delete, data: { confirm:  t('views.common.delete_confirm') } %> |
 <%end%>
 <%= link_to t('views.common.back'), reports_path %> |
-<%= link_to User.human_attribute_name('reports',user:@report.user.name), user_reports_path(@report.user) %>
+<%if @report.user.name.present? %>
+  <%= link_to User.human_attribute_name('reports',user:@report.user.name), user_reports_path(@report.user) %>
+<%else%>
+  <%= link_to User.human_attribute_name('reports',user:@report.user.email), user_reports_path(@report.user) %>
+<%end%>
