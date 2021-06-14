@@ -1,15 +1,15 @@
 <% commentable.comments.includes(:user).order(created_at: :desc, id: :asc).each do |comment| %>
-<%if comment.user.name.present?%>
+<% if comment.user.name.present? %>
    <p>
-      <strong><%= Comment.human_attribute_name(:name) %>:</strong>
+      <strong><%= User.human_attribute_name(:name) %>:</strong>
       <%= comment.user.name %>
    </p>
-<%else%>
+<% else %>
    <p>
       <strong><%= User.human_attribute_name(:email) %>:</strong>
       <%= comment.user.email %>
    </p>
-<%end%>
+<% end %>
 <p>
    <strong><%= Comment.human_attribute_name(:created_date) %>:</strong>
    <%= l(comment.created_at.to_date, format: :long) %>
@@ -19,7 +19,11 @@
    <%= comment.body %>
 </p>
 
+<%if comment.user == current_user %>
+   <%= link_to t('views.common.destroy'), [commentable,comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
 <%end%>
+
+<% end %>
 <% unless commentable.comments.present? %>
    <%= Comment.human_attribute_name(:nothing) %>
-<%end%>
+<% end %>
