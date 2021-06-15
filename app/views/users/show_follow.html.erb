@@ -1,0 +1,38 @@
+<h1><%= @title %></h1>
+<section class="user_info">
+  <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150]) if @user.avatar.attached? %>
+  <h2><%= @user.email %></h2>
+  <h2><%= @user.name%></h2>
+  <span><%= link_to t('views.common.my_profile'), @user %></span>
+</section>
+<section class="stats">
+  <%= render 'shared/stats', user: @user %>
+</section>
+<section>
+<% if @users.any? %>
+  <h3><%= @title %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= User.human_attribute_name(:email) %></th>
+        <th><%= User.human_attribute_name(:name) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]) if user.avatar.attached? %>
+        </td>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to t('views.common.show'), user %></td>
+        <% end %>
+      </tbody>
+      </table>
+<% end %>
+</section>
+<section>
+<% paginate @users %>
+</section>
