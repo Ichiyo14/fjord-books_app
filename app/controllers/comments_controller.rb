@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t(:notice_create, scope: 'controllers.common', name: Comment.model_name.human)
     else
-      render :new
+      render @commentable
     end
   end
 
