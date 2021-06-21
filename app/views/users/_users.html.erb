@@ -29,5 +29,5 @@
     </tbody>
   </table>
 <% else %>
-  <p>データがありません。</p>
+  <p><%= Comment.human_attribute_name(:nothing) %></p>
 <% end %>
