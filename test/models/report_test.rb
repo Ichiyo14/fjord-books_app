@@ -13,6 +13,6 @@ class ReportTest < ActiveSupport::TestCase
 
   test '#created_on' do
     report = reports(:my_nippou)
-    assert_equal(report.created_on ,"Tue, 02 Feb 2021".to_date)
+    assert_equal(report.created_on, 'Tue, 02 Feb 2021'.to_date)
   end
 end
